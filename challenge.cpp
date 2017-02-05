@@ -87,6 +87,12 @@ int main(int argc, char* argv[]) {
 Node* insert(Node* head, Data data) {
   if (head == NULL) {
     head = new Node(data);
+  } else if (head->data.gpa > data.gpa) {
+    Node *oldHead = new Node(head->data);
+    oldHead->next = head->next;
+
+    head = new Node(data);
+    head->next = oldHead;
   } else {
     Node* currNode = head;
 
