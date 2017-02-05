@@ -84,28 +84,53 @@ int main(int argc, char* argv[]) {
   return 0;
 }
 
+/**
+* Insert a new node in the list in ascending GPA order
+* head = head of the list
+* data = data for new node
+* @return curent head of the list
+*/
 Node* insert(Node* head, Data data) {
   if (head == NULL) {
     head = new Node(data);
-  } else if (head->data.gpa > data.gpa) {
-    Node *oldHead = new Node(head->data);
-    oldHead->next = head->next;
-
-    head = new Node(data);
-    head->next = oldHead;
   } else {
     Node* currNode = head;
+    Node* prevNode = NULL;
+    Node* newNode = new Node(data);
 
-    while(currNode->next != NULL) {
-      currNode = currNode->next;
+    bool spotFound = false;
+    while(!spotFound) {
+      if(currNode->data.gpa > newNode->data.gpa) {
+        // Insert new node in between 2 other nodes
+        if(prevNode == NULL) {
+          // A new head
+          head = newNode;
+          newNode->next = currNode;
+        } else {
+          prevNode->next = newNode;
+          newNode->next = currNode;
+        }
+
+        spotFound = true;
+      } else if (currNode->next == NULL) {
+        // Insert new node at the end
+        currNode->next = newNode;
+        spotFound = true;
+      } else {
+        // Spot not found, keep going
+        prevNode = currNode;
+        currNode = currNode->next;
+      }
     }
-
-    currNode->next = new Node(data);
   }
 
   return head;
 }
 
+/**
+* Prints the list
+* head = head of the list
+*/
 void print(Node* head) {
   Node* currNode = head;
   while(currNode != nullptr) {
