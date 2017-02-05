@@ -12,16 +12,27 @@
 
 using namespace std;
 
+// Structs
 struct Data {
-  int sat;
   double gpa;
+  int sat;
+
+  Data(double _gpa, int _sat) {
+    gpa = _gpa;
+    sat = _sat;
+  }
 };
 
 struct Node {
   Data data;
   Node* next;
+
+  // Should point to the closest node with > gpa and < sat
   Node* relevant;
 };
+
+// Forward declare methods
+Node* insert(Node* head, Data data);
 
 int main(int argc, char* argv[]) {
   // Open program properly
@@ -33,13 +44,20 @@ int main(int argc, char* argv[]) {
   ifstream file(argv[1]);
 
   // grab data from file
+  Node* head;
   int n, sat;
   double gpa;
   if (file.is_open()) {
     file >> n;
     for(int i = 0; i < n; i++) {
       file >> gpa >> sat;
-      cout << gpa << " " << sat << endl;
+
+      Data newData(gpa, sat);
+      if(head == NULL) {
+        head->data = newData;
+      } else {
+        head = insert(head, newData);
+      }
     }
   }
 
@@ -49,4 +67,8 @@ int main(int argc, char* argv[]) {
 
   file.close();
   return 0;
+}
+
+Node* insert(Node* head, Data data) {
+  return head;
 }
