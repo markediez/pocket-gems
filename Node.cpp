@@ -2,6 +2,6 @@
 
 Node::Node(Data _data) {
   next = nullptr;
-  relevant = nullptr;
+  nextSequence = nullptr;
   data = _data;
 }

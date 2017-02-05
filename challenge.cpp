@@ -37,7 +37,10 @@ int main(int argc, char* argv[]) {
   }
 
   list.print();
+
   // dynamic programming, find most length
+  Node* h = list.findLongestSequence();
+  list.printSequence(h);
 
   file.close();
   return 0;

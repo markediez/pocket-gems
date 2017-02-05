@@ -20,6 +20,8 @@ class LinkedList {
 
     void insert(Data data);
     void print();
+    void printSequence(Node* n);
+    Node* findLongestSequence();
 
     // Accessors
     int getSize();

@@ -44,6 +44,16 @@ void LinkedList::insert(Data data) {
 }
 
 /**
+* Finds the longest sequence such that gpa is increasing while sat scores are decreasing
+* @return - head of the longest sequence
+*/
+Node* LinkedList::findLongestSequence() {
+  Node* h;
+  
+  return h;
+}
+
+/**
 * Prints the list
 * head = head of the list
 */
@@ -52,6 +62,18 @@ void LinkedList::print() {
   while(currNode != nullptr) {
     cout << "(" << currNode->data.gpa << "," << currNode->data.sat << ")" << endl;
     currNode = currNode->next;
+  }
+}
+
+/**
+* Prints the list
+* head = head of the list
+*/
+void LinkedList::printSequence(Node *n) {
+  Node* currNode = n;
+  while(currNode != nullptr) {
+    cout << "(" << currNode->data.gpa << "," << currNode->data.sat << ")" << endl;
+    currNode = currNode->nextSequence;
   }
 }
 
