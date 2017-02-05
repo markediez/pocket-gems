@@ -12,25 +12,41 @@
 
 using namespace std;
 
+struct Data {
+  int sat;
+  double gpa;
+};
+
+struct Node {
+  Node* head;
+  Node* next;
+  Data data;
+};
+
 int main(int argc, char* argv[]) {
-  // open file
+  // Open program properly
   if (argc != 2) {
     cout << "Run the program './program.out <filename>' e.g. './program.out data.txt'" << endl;
     exit(0);
   }
 
+  ifstream file(argv[1]);
+
   // grab data from file
   int n, sat;
   double gpa;
-
-  cin >> n;
-  for(int i = 0; i < n; i++) {
-    cin >> gpa >> sat;
-    cout << gpa << sat << endl;
+  if (file.is_open()) {
+    file >> n;
+    for(int i = 0; i < n; i++) {
+      file >> gpa >> sat;
+      cout << gpa << " " << sat << endl;
+    }
   }
 
   // sort by increasing gpa
 
   // dynamic programming, find most length
+
+  file.close();
   return 0;
 }
