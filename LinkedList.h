@@ -12,7 +12,7 @@ class LinkedList {
     int size;
     Node* head;
 
-    void trackSequence(Node* h);
+    int trackSequence(Node* h);
     void updateSequenceSize(Node* h, int sequenceSize);
   public:
     LinkedList();

@@ -55,23 +55,33 @@ void LinkedList::insert(Data data) {
 Node* LinkedList::findLongestSequence(Node* h) {
   cout << endl << "Tracking sequences..." << endl;
 
+  Node* longestHead = h;
+  int longestSize = 0;
+  int currSize = 0;
   while(h->next != NULL) {
-    trackSequence(h);
+    currSize = trackSequence(h);
 
-    cout << "== SEQUENCE FOUND [" << h->sequenceSize << "] ==" << endl;
+    cout << "== SEQUENCE FOUND [" << currSize << "] ==" << endl;
     printSequence(h);
     cout << "========================" << endl << endl;
 
+    if (currSize > longestSize) {
+      longestSize = currSize;
+      longestHead = h;
+    }
+
     h = h->next;
   }
-  return h;
+
+  return longestHead;
 }
 
 /**
 * Finds the sequence of ASC gpa and DESC sat for a given head
 * h = head of list / sublist
+* @return sequenceSize from h
 */
-void LinkedList::trackSequence(Node *h) {
+int LinkedList::trackSequence(Node *h) {
   Node* tail = h;
   Node* currNode = h->next;
 
@@ -92,6 +102,7 @@ void LinkedList::trackSequence(Node *h) {
   }
 
   updateSequenceSize(h, sequenceSize);
+  return sequenceSize;
 }
 
 /**
