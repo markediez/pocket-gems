@@ -70,13 +70,13 @@ int main(int argc, char* argv[]) {
       file >> gpa >> sat;
 
       Data newData(gpa, sat);
+      // Insert in linked list sorted by ascending gpa
       head = insert(head, newData);
     }
   }
 
   print(head);
 
-  // sort by increasing gpa
 
   // dynamic programming, find most length
 
