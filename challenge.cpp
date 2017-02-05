@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
 
   ifstream file(argv[1]);
 
-  // grab data from file
+  // Grab data from file and store in LinkedList
   LinkedList list;
   int n, sat;
   double gpa;
@@ -34,16 +34,14 @@ int main(int argc, char* argv[]) {
       Data newData(gpa, sat);
       list.insert(newData);
     }
+  } else {
+    cout << "File '" << argv[1] << "' does not exist.";
+    exit(0);
   }
-  cout << "LIST ===============================" << endl;
-  list.print();
-  cout << "====================================" << endl;
 
-  // dynamic programming, find most length
   Node* h = list.findLongestSequence(list.getHead());
-  cout << "SEQUENCE ===========================" << endl;
+  cout << "Longest Sequence has the size of " << h->sequenceSize << ":" << endl;
   list.printSequence(h);
-  cout << "====================================" << endl;
 
   file.close();
   return 0;

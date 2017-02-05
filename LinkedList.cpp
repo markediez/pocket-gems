@@ -14,6 +14,7 @@ LinkedList::LinkedList() {
 void LinkedList::insert(Data data) {
   size++;
 
+  // Insert a new node with the given data
   if (head == NULL) {
     head = new Node(data);
   } else {
@@ -21,6 +22,7 @@ void LinkedList::insert(Data data) {
     Node* prevNode = NULL;
     Node* newNode = new Node(data);
 
+    // Place node in proper spot
     bool spotFound = false;
     while(!spotFound) {
       if(currNode->data.gpa > newNode->data.gpa) {
@@ -44,8 +46,8 @@ void LinkedList::insert(Data data) {
         prevNode = currNode;
         currNode = currNode->next;
       }
-    }
-  }
+    } // end while
+  } // end else
 }
 
 /**
@@ -53,18 +55,13 @@ void LinkedList::insert(Data data) {
 * @return - head of the longest sequence
 */
 Node* LinkedList::findLongestSequence(Node* h) {
-  cout << endl << "Tracking sequences..." << endl;
-
   Node* longestHead = h;
   int longestSize = 0;
   int currSize = 0;
   while(h->next != NULL) {
     currSize = trackSequence(h);
 
-    cout << "== SEQUENCE FOUND [" << currSize << "] ==" << endl;
-    printSequence(h);
-    cout << "========================" << endl << endl;
-
+    // Update longestSize and longestHead when a longer sequence is found
     if (currSize > longestSize) {
       longestSize = currSize;
       longestHead = h;
