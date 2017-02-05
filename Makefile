@@ -9,3 +9,7 @@ Node.o: Node.h Node.cpp Data.o
 
 Data.o: Data.h Data.cpp
 	g++ -Wall -std=c++11 -c Data.cpp
+
+clean:
+	rm -rf *.o
+	rm -rf *.out
