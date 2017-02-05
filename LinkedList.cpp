@@ -58,6 +58,7 @@ Node* LinkedList::findLongestSequence(Node* h) {
   Node* longestHead = h;
   int longestSize = 0;
   int currSize = 0;
+  int possibleLength = size;
   while(h->next != NULL) {
     currSize = trackSequence(h);
 
@@ -67,7 +68,13 @@ Node* LinkedList::findLongestSequence(Node* h) {
       longestHead = h;
     }
 
-    h = h->next;
+    if (possibleLength > longestSize) {
+      h = h->next;
+      possibleLength--;
+    } else {
+      // We can't find a longer sequence if the possible length is <= current sequence
+      break;
+    }
   }
 
   return longestHead;
