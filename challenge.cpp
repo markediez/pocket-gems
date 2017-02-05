@@ -35,12 +35,15 @@ int main(int argc, char* argv[]) {
       list.insert(newData);
     }
   }
-
+  cout << "LIST ===============================" << endl;
   list.print();
+  cout << "====================================" << endl;
 
   // dynamic programming, find most length
-  Node* h = list.findLongestSequence();
+  Node* h = list.findLongestSequence(list.getHead());
+  cout << "SEQUENCE ===========================" << endl;
   list.printSequence(h);
+  cout << "====================================" << endl;
 
   file.close();
   return 0;

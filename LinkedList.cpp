@@ -1,5 +1,10 @@
 #include "LinkedList.h"
 
+LinkedList::LinkedList() {
+  size = 0;
+  head = NULL;
+}
+
 /**
 * Insert a new node in the list in ascending GPA order
 * head = head of the list
@@ -47,10 +52,64 @@ void LinkedList::insert(Data data) {
 * Finds the longest sequence such that gpa is increasing while sat scores are decreasing
 * @return - head of the longest sequence
 */
-Node* LinkedList::findLongestSequence() {
-  Node* h;
-  
+Node* LinkedList::findLongestSequence(Node* h) {
+  cout << endl << "Tracking sequences..." << endl;
+
+  while(h->next != NULL) {
+    trackSequence(h);
+
+    cout << "== SEQUENCE FOUND [" << h->sequenceSize << "] ==" << endl;
+    printSequence(h);
+    cout << "========================" << endl << endl;
+
+    h = h->next;
+  }
   return h;
+}
+
+/**
+* Finds the sequence of ASC gpa and DESC sat for a given head
+* h = head of list / sublist
+*/
+void LinkedList::trackSequence(Node *h) {
+  Node* tail = h;
+  Node* currNode = h->next;
+
+  int sequenceSize = 1;
+  while(currNode->next != NULL) {
+    if(currNode->data.sat < tail->data.sat) {
+      tail->nextSequence = currNode;
+      tail = currNode;
+      sequenceSize += currNode->sequenceSize;
+    }
+
+    if (currNode->nextSequence == NULL) {
+      currNode = currNode->next;
+    } else {
+      // No need to find the sequence from here again
+      break;
+    }
+  }
+
+  updateSequenceSize(h, sequenceSize);
+}
+
+/**
+* Updates the sequence size of each node in the sequence starting at h
+* h = start of sequence
+* sequenceSize = size of sequence from h
+*/
+void LinkedList::updateSequenceSize(Node* h, int sequenceSize) {
+  while(h->nextSequence != NULL) {
+    h->sequenceSize = sequenceSize;
+    h = h->nextSequence;
+    sequenceSize--;
+
+    if (h->sequenceSize == sequenceSize) {
+      // No need to update from here
+      break;
+    }
+  }
 }
 
 /**

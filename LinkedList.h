@@ -12,16 +12,16 @@ class LinkedList {
     int size;
     Node* head;
 
+    void trackSequence(Node* h);
+    void updateSequenceSize(Node* h, int sequenceSize);
   public:
-    LinkedList() {
-      size = 0;
-      head = NULL;
-    }
+    LinkedList();
+    LinkedList(Node* h);
 
     void insert(Data data);
     void print();
     void printSequence(Node* n);
-    Node* findLongestSequence();
+    Node* findLongestSequence(Node* h);
 
     // Accessors
     int getSize();

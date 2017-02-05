@@ -9,6 +9,7 @@ struct Node {
 
   // Should point to the closest node with > gpa and < sat
   Node* nextSequence;
+  int sequenceSize;
 
   Node(Data _data);
 };
