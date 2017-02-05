@@ -17,9 +17,19 @@ struct Data {
   double gpa;
   int sat;
 
+  Data() {
+    gpa = 0;
+    sat = 0;
+  }
+
   Data(double _gpa, int _sat) {
     gpa = _gpa;
     sat = _sat;
+  }
+
+  void operator=(Data &rhs) {
+    gpa = rhs.gpa;
+    sat = rhs.sat;
   }
 };
 
@@ -29,9 +39,16 @@ struct Node {
 
   // Should point to the closest node with > gpa and < sat
   Node* relevant;
+
+  Node(Data _data) {
+    next = NULL;
+    relevant = NULL;
+    data = _data;
+  }
 };
 
 // Forward declare methods
+void print(Node* head);
 Node* insert(Node* head, Data data);
 
 int main(int argc, char* argv[]) {
@@ -44,7 +61,7 @@ int main(int argc, char* argv[]) {
   ifstream file(argv[1]);
 
   // grab data from file
-  Node* head;
+  Node* head = NULL;
   int n, sat;
   double gpa;
   if (file.is_open()) {
@@ -53,13 +70,11 @@ int main(int argc, char* argv[]) {
       file >> gpa >> sat;
 
       Data newData(gpa, sat);
-      if(head == NULL) {
-        head->data = newData;
-      } else {
-        head = insert(head, newData);
-      }
+      head = insert(head, newData);
     }
   }
+
+  print(head);
 
   // sort by increasing gpa
 
@@ -70,5 +85,25 @@ int main(int argc, char* argv[]) {
 }
 
 Node* insert(Node* head, Data data) {
+  if (head == NULL) {
+    head = new Node(data);
+  } else {
+    Node* currNode = head;
+
+    while(currNode->next != NULL) {
+      currNode = currNode->next;
+    }
+
+    currNode->next = new Node(data);
+  }
+
   return head;
+}
+
+void print(Node* head) {
+  Node* currNode = head;
+  while(currNode != nullptr) {
+    cout << "(" << currNode->data.gpa << "," << currNode->data.sat << ")" << endl;
+    currNode = currNode->next;
+  }
 }
