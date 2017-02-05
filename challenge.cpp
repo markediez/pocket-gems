@@ -18,9 +18,9 @@ struct Data {
 };
 
 struct Node {
-  Node* head;
-  Node* next;
   Data data;
+  Node* next;
+  Node* relevant;
 };
 
 int main(int argc, char* argv[]) {
