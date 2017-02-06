@@ -4,8 +4,9 @@ Email: msdiez@ucdavis.edu
 
 ---
 ## Running the program (macOS, Linux)
-1. Run `make`
-2. Run `./program.out <filename>`
+1. Clone the repository
+2. Run `make`
+3. Run `./program.out <filename>`
 ---
 ## Input
 The input file should be in the format
