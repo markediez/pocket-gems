@@ -2,10 +2,11 @@
 Author: Mark Emmanuel Diez  
 Email: msdiez@ucdavis.edu
 
+---
 ## Running the program (macOS, Linux)
 1. Run `make`
 2. Run `./program.out <filename>`
-
+---
 ## Input
 The input file should be in the format
 ```
@@ -41,7 +42,7 @@ For example
 3.0 2200
 3.7 2300
 ```
-
+---
 ## Output
 The output should show the size of the sequence followed by the sequence itself
 ```
@@ -52,7 +53,7 @@ Longest Sequence has the size of 5:
 (2.8,1150)
 (3.3,1100)
 ```
-
+---
 ## Algorithm
 #### Definitions
 > A **node** has data, next, nextSequence, sequenceSize.  
@@ -71,20 +72,21 @@ The algorithm to solve the problem is as follows.
   - Keep track of the possible size of a sequence
   - As soon as the possibleSize <= *N*.sequenceSize return N
 3. Output the sequence with the resulting *N* from step 2
-
+---
 ## Algorithm Analysis
 Takes O(n) space
 
-### Adding Data + Sorting
+#### Adding Data + Sorting
 The worst case is O(n^2) because it does a search O(n) and insert O(1) n times.
 
-### Finding the longest sequence
+#### Finding the longest sequence
 Again, worse case is O(n^2) which can only happen if no sequence exists.
 
 In both cases, searching is the cause for n^2 time complexity.
-
+---
 ## Notes
 - The program assumes GPA and SAT scores are unique
 - The program assumes a proper input file is provided
 - The program returns the first instance of the longest sequence.
   - Therefore, given the longest sequence has the size of 3, if A represents the first longest sequence of such size, and B another sequence of such size, the program will return A.
+- The program can run on Windows through cygwin or other programs that can provide a C++ environment with make.
