@@ -60,15 +60,17 @@ Longest Sequence has the size of 5:
 ---
 ## Algorithm
 #### Definitions
-> A **node** has data, next, nextSequence, sequenceSize.  
-> **data** consists of an individual's GPA and SAT.  
-> **next** is a node N with a parent node P such that N.data.gpa > P.data.gpa  
-> **nextSequence** is a node N with a parent node P such that N.data.gpa > P.data.gpa and N.data.sat < P.data.sat  
-> For a node N, **sequenceSize** is an integer that represents the number of existing nextSequence nodes from N   
-> A **Linked List** is a list of nodes.
-
+```
+A **node** has data, next, nextSequence, sequenceSize.  
+**data** consists of an individual's GPA and SAT.  
+**next** is a node N with a parent node P such that N.data.gpa > P.data.gpa  
+**nextSequence** is a node N with a parent node P such that N.data.gpa > P.data.gpa and N.data.sat < P.data.sat  
+For a node N, **sequenceSize** is an integer that represents the number of existing nextSequence nodes from N   
+A **Linked List** is a list of nodes.
+```
 
 The algorithm to solve the problem is as follows.  
+
 1. Sort the data loaded by ascending GPA in a Linked List
 2. Traverse through the list and find the longest sequenceSize.
   - For each node *N* in the list, find its sequence.
