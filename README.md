@@ -68,7 +68,7 @@ Longest Sequence has the size of 5:
 > A **Linked List** is a list of nodes.
 
 
-The algorithm to solve the problem is as follows.
+The algorithm to solve the problem is as follows.  
 1. Sort the data loaded by ascending GPA in a Linked List
 2. Traverse through the list and find the longest sequenceSize.
   - For each node *N* in the list, find its sequence.
