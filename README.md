@@ -7,6 +7,7 @@ Email: msdiez@ucdavis.edu
 1. Clone the repository
 2. Run `make`
 3. Run `./program.out <filename>`
+
 ---
 ## Input
 The input file should be in the format
@@ -43,6 +44,7 @@ For example
 3.0 2200
 3.7 2300
 ```
+
 ---
 ## Output
 The output should show the size of the sequence followed by the sequence itself
@@ -54,6 +56,7 @@ Longest Sequence has the size of 5:
 (2.8,1150)
 (3.3,1100)
 ```
+
 ---
 ## Algorithm
 #### Definitions
@@ -73,6 +76,7 @@ The algorithm to solve the problem is as follows.
   - Keep track of the possible size of a sequence
   - As soon as the possibleSize <= *N*.sequenceSize return N
 3. Output the sequence with the resulting *N* from step 2
+
 ---
 ## Algorithm Analysis
 Takes O(n) space
@@ -84,6 +88,7 @@ The worst case is O(n^2) because it does a search O(n) and insert O(1) n times.
 Again, worse case is O(n^2) which can only happen if no sequence exists.
 
 In both cases, searching is the cause for n^2 time complexity.
+
 ---
 ## Notes
 - The program assumes GPA and SAT scores are unique
